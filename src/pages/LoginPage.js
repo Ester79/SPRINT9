@@ -18,7 +18,7 @@ const initialModaltState = {
 
 const LoginPage = () => {
     const [state, setState] = useContext(AppContext);
-    const [showModal, setShowModal] = useState({ ...initialModaltState })
+    const [showModal, setShowModal] = useState({ ...initialModaltState });
 
     let name = useRef(null);
     let email = useRef(null);
@@ -35,15 +35,18 @@ const LoginPage = () => {
 
     const saveLogin = () => {
         if (state.name && state.email && state.age >= 18) {
-            localStorage.setItem('Name: ', JSON.stringify(state.name))
-            localStorage.setItem('Email: ', JSON.stringify(state.email))
+
+            localStorage.setItem('Name: ', JSON.stringify(state.name));
+            localStorage.setItem('Email: ', JSON.stringify(state.email));
             navigate('/onboarding/');
         }
         if (!state.name || !state.email || !state.age) {
             setShowModal({ ...showModal, visible: true, title1: title1ErrorLogin, text: textErrorLogin, buttonText: 'Let me check again' });
+
         }
         if (state.name && state.email && state.age < 18) {
-            setShowModal({ ...showModal, visible: true, title1: title1UnderAge, text: textUnderAge, buttonText: 'Understood' })
+            setShowModal({ ...showModal, visible: true, title1: title1UnderAge, text: textUnderAge, buttonText: 'Understood' });
+
         }
     };
 
